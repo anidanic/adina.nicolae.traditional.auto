@@ -10,8 +10,7 @@ using TraditionalAutomation.Pages;
 namespace TraditionalAutomation.TraditionalTestsCSharp
 {
     /// <summary>
-    /// elapsed 3h, 20 min
-    /// now 11.30
+    /// elapsed 5h, 20 min
     /// </summary>
     [TestFixture]
     public class TraditionalTestsCSharp : BaseTest
@@ -44,39 +43,67 @@ namespace TraditionalAutomation.TraditionalTestsCSharp
         }
 
         [Test]
-        public void CanvasChartTest()
-        {
-            string url = "https://www.google.com/";
-            driver.Navigate().GoToUrl(url);
-            Thread.Sleep(1000);
-            Console.WriteLine("Url is {0}", url);
-        }
-
-        [Test]
         public void DataDrivenTest()
         {
-            string url = "https://www.google.com/";
+            //decide which version/ url you want to use
+            bool testVersion1 = true;
+            bool showAd = false;
+            string url = Utils.GetUrl(testVersion1, showAd);
+            //go to that url
             driver.Navigate().GoToUrl(url);
             Thread.Sleep(1000);
-            Console.WriteLine("Url is {0}", url);
-        }
+            LoginPage loginPage = new LoginPage(driver);
 
-        [Test]
-        public void DynamicContentTest()
-        {
-            string url = "https://www.google.com/";
-            driver.Navigate().GoToUrl(url);
-            Thread.Sleep(1000);
-            Console.WriteLine("Url is {0}", url);
+
+            //            Test the following login functionality by entering different values to username and password fields.
+            //If you don’t enter the username and password and click the login button, it should throw an error
+            //If you only enter the username and click the login button, it should throw an error
+            //If you only enter the password and click the login button, it should throw an error
+            //If you enter both username(any value) and password(any value), it should log you in.
         }
 
         [Test]
         public void TableSortTest()
         {
-            string url = "https://www.google.com/";
+            //decide which version/ url you want to use
+            bool testVersion1 = true;
+            bool showAd = false;
+            string url = Utils.GetUrl(testVersion1, showAd);
+            //go to that url
             driver.Navigate().GoToUrl(url);
             Thread.Sleep(1000);
-            Console.WriteLine("Url is {0}", url);
+            LoginPage loginPage = new LoginPage(driver);
+
+            //Once logged in (use any username and password to login), view the Recent Transactions table.Your test should click on the "Amounts" header, and verify that the column is in ascending order and that each row’s data stayed in tact after the sorting.
+        }
+
+        [Test]
+        public void CanvasChartTest()
+        {
+            //decide which version/ url you want to use
+            bool testVersion1 = true;
+            bool showAd = false;
+            string url = Utils.GetUrl(testVersion1, showAd);
+            //go to that url
+            driver.Navigate().GoToUrl(url);
+            Thread.Sleep(1000);
+            LoginPage loginPage = new LoginPage(driver);
+
+            //Once logged in, click on the "Compare Expenses" button on the toolbar. This will display a bar chart comparing the expenses for the year 2017 and 2018.Assume the values of the chart are coming from a test data and the test data will not change across versions.Validate that the bar chart and representing that data(number of bars and their heights).They should remain the same across versions.Then click on the "Show data for next year" button.This should add the data for the year 2019.Verify that this data set is added for the year 2019.
+        }
+        [Test]
+        public void DynamicContentTest()
+        {
+            //decide which version/ url you want to use
+            bool testVersion1 = true;
+            bool showAd = true;
+            string url = Utils.GetUrl(testVersion1, showAd);
+            //go to that url
+            driver.Navigate().GoToUrl(url);
+            Thread.Sleep(1000);
+            LoginPage loginPage = new LoginPage(driver);
+
+            //Test for the existence of a display ad that’s dynamic and at times might go missing by using this URL: https://demo.applitools.com/hackathon.html?showAd=true. Log in by entering any username and password. Once logged in, you should see two different "Flash sale" gifs. Make sure both gifs exists.
         }
     }
 }
