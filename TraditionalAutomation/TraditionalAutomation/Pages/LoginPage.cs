@@ -67,7 +67,7 @@ namespace TraditionalAutomation.Pages
             }
                 for (int i = 0; i < Labels.Count; i++)
                 {
-                    isConfirmed = isConfirmed & Labels[i].Displayed & (Labels[i].Text == ExpectedLabels[i]);
+                    isConfirmed = isConfirmed && Labels[i].Displayed && (Labels[i].Text == ExpectedLabels[i]);
                     if (!isConfirmed)
                     {
                         Console.WriteLine("Issue with the label for {0}. It has Display {1} and Text {2}", ExpectedLabels[i], Labels[i].Displayed, Labels[i].Text);
@@ -91,7 +91,7 @@ namespace TraditionalAutomation.Pages
                 {
                     imageSrc = imageSrc.Substring(index);
                 }
-                isConfirmed = isConfirmed & Images[i].Displayed & (imageSrc == ExpectedImages[i]);
+                isConfirmed = isConfirmed && Images[i].Displayed && (imageSrc == ExpectedImages[i]);
                     if (!isConfirmed)
                     {
                         Console.WriteLine("Issue with the image with src for {0}. It has Displayed {1} and Text {2}", ExpectedImages[i], Images[i].Displayed, imageSrc);
@@ -112,7 +112,7 @@ namespace TraditionalAutomation.Pages
             }
             for (int i = 0; i < PlaceHolders.Length; i++)
                 {
-                    isConfirmed = isConfirmed & (PlaceHolders[i] == ExpectedPlaceHolders[i]);
+                    isConfirmed = isConfirmed && (PlaceHolders[i] == ExpectedPlaceHolders[i]);
                     if (!isConfirmed)
                     {
                         Console.WriteLine("Issue with the placeholder for {0}. It has Text {1}", ExpectedPlaceHolders[i], PlaceHolders[i]);

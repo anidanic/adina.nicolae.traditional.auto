@@ -19,10 +19,13 @@ namespace TraditionalAutomation.TraditionalTestsCSharp
         [Test]
         public void LoginUITest()
         {
-            string url = "https://demo.applitools.com/hackathon.html";
+            //decide which version/ url you want to use
+            bool testVersion1 = true;
+            bool showAd = false;
+            string url = Utils.GetUrl(testVersion1, showAd);
+            //go to that url
             driver.Navigate().GoToUrl(url);
             Thread.Sleep(1000);
-            Console.WriteLine("Url is {0}", url);
             LoginPage loginPage = new LoginPage(driver);
             Assert.Multiple(() =>
             {
