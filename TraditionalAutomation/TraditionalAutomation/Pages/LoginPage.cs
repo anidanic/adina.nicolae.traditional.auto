@@ -14,7 +14,7 @@ namespace TraditionalAutomation.Pages
     {
         //items
         IWebDriver driver;
-        IWebElement PageName => driver.FindElement(By.ClassName("auth-header"));
+        IWebElement PageName => driver.FindElement(By.TagName("h4"));
         IWebElement Username => driver.FindElement(By.Id("username"));
         IWebElement Password => driver.FindElement(By.Id("password"));
         IWebElement LoginButton => driver.FindElement(By.Id("log-in"));
