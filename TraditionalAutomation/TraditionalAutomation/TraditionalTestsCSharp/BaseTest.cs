@@ -14,8 +14,8 @@ using TraditionalAutomation.Pages;
 namespace TraditionalAutomation.TraditionalTestsCSharp
 {
     /// <summary>
-    /// elapsed 2h
-    /// now 11.30 - 13.00
+    /// elapsed 2h, 20 min
+    /// now 10.30
     /// </summary>
     [TestFixture]
     public class BaseTest
