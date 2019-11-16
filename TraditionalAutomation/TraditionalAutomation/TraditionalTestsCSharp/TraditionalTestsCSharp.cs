@@ -24,17 +24,20 @@ namespace TraditionalAutomation.TraditionalTestsCSharp
             Thread.Sleep(1000);
             Console.WriteLine("Url is {0}", url);
             LoginPage loginPage = new LoginPage(driver);
-            Assert.IsTrue(loginPage.PageNameIsDisplayed, "Issue with page name display");
-            Assert.IsTrue(loginPage.UsernameIsDisplayed, "Issue with username display");
-            Assert.IsTrue(loginPage.PasswordIsDisplayed, "Issue with password display");
-            Assert.IsTrue(loginPage.LoginButtonIsDisplayed, "Issue with login button display");
-            Assert.IsTrue(loginPage.RememberMeIsDisplayed, "Issue with remember me display");
-            Assert.IsTrue(loginPage.RememberMeCheckboxIsEnabled, "Issue with the checbox for remember me");
-            Assert.AreEqual(loginPage.ExpectedPageName,loginPage.PageNameText, "Issue with the text for page name");
-            Assert.AreEqual(loginPage.ExpectedLoginButton, loginPage.LoginButtonText, "Issue with the text for login button");
-            Assert.IsTrue(loginPage.LabelsAreConfirmed(), "Issue with the text for the labels");
-            Assert.IsTrue(loginPage.ImagesAreConfirmed(), "Issue with the text for the images");
-            Assert.IsTrue(loginPage.PlaceHoldersAreConfirmed(), "Issue with the text for the placeholders");
+            Assert.Multiple(() =>
+            {
+                Assert.IsTrue(loginPage.PageNameIsDisplayed, "Issue with page name display");
+                Assert.IsTrue(loginPage.UsernameIsDisplayed, "Issue with username display");
+                Assert.IsTrue(loginPage.PasswordIsDisplayed, "Issue with password display");
+                Assert.IsTrue(loginPage.LoginButtonIsDisplayed, "Issue with login button display");
+                Assert.IsTrue(loginPage.RememberMeIsDisplayed, "Issue with remember me display");
+                Assert.IsTrue(loginPage.RememberMeCheckboxIsEnabled, "Issue with the checbox for remember me");
+                Assert.AreEqual(loginPage.ExpectedPageName, loginPage.PageNameText, "Issue with the text for page name");
+                Assert.AreEqual(loginPage.ExpectedLoginButton, loginPage.LoginButtonText, "Issue with the text for login button");
+                Assert.IsTrue(loginPage.LabelsAreConfirmed(), "Issue with the text for the labels");
+                Assert.IsTrue(loginPage.ImagesAreConfirmed(), "Issue with the text for the images");
+                Assert.IsTrue(loginPage.PlaceHoldersAreConfirmed(), "Issue with the text for the placeholders");
+            });
         }
 
         [Test]
