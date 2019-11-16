@@ -9,6 +9,10 @@ using TraditionalAutomation.Pages;
 
 namespace TraditionalAutomation.TraditionalTestsCSharp
 {
+    /// <summary>
+    /// elapsed 3h, 20 min
+    /// now 11.30
+    /// </summary>
     [TestFixture]
     public class TraditionalTestsCSharp : BaseTest
     {
@@ -19,7 +23,7 @@ namespace TraditionalAutomation.TraditionalTestsCSharp
             driver.Navigate().GoToUrl(url);
             Thread.Sleep(1000);
             Console.WriteLine("Url is {0}", url);
-            LoginPage loginPage = new LoginPage();
+            LoginPage loginPage = new LoginPage(driver);
             Assert.IsTrue(loginPage.PageNameIsDisplayed, "Issue with page name display");
             Assert.IsTrue(loginPage.UsernameIsDisplayed, "Issue with username display");
             Assert.IsTrue(loginPage.PasswordIsDisplayed, "Issue with password display");

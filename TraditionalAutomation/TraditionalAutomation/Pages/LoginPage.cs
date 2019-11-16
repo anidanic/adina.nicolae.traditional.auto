@@ -7,9 +7,6 @@ using System.Threading.Tasks;
 
 namespace TraditionalAutomation.Pages
 {
-    /// <summary>
-    /// start hour 10.30
-    /// </summary>
     public class LoginPage
     {
         //items
