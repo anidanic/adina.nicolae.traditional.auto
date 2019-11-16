@@ -14,7 +14,7 @@ namespace TraditionalAutomation.TraditionalTestsCSharp
         [Test]
         public void CanvasChartTest()
         {
-            string url = "www.google.com";
+            string url = "https://www.google.com/";
             driver.Navigate().GoToUrl(url);
             Thread.Sleep(1000);
             Console.WriteLine("Url is {0}", url);
@@ -23,7 +23,7 @@ namespace TraditionalAutomation.TraditionalTestsCSharp
         [Test]
         public void DataDrivenTest()
         {
-            string url = "www.google.com";
+            string url = "https://www.google.com/";
             driver.Navigate().GoToUrl(url);
             Thread.Sleep(1000);
             Console.WriteLine("Url is {0}", url);
@@ -32,7 +32,7 @@ namespace TraditionalAutomation.TraditionalTestsCSharp
         [Test]
         public void DynamicContentTest()
         {
-            string url = "www.google.com";
+            string url = "https://www.google.com/";
             driver.Navigate().GoToUrl(url);
             Thread.Sleep(1000);
             Console.WriteLine("Url is {0}", url);
@@ -41,7 +41,7 @@ namespace TraditionalAutomation.TraditionalTestsCSharp
         [Test]
         public void LoginUITest()
         {
-            string url = "www.google.com";
+            string url = "https://www.google.com/";
             driver.Navigate().GoToUrl(url);
             Thread.Sleep(1000);
             Console.WriteLine("Url is {0}", url);
@@ -49,7 +49,7 @@ namespace TraditionalAutomation.TraditionalTestsCSharp
         [Test]
         public void TableSortTest()
         {
-            string url = "www.google.com";
+            string url = "https://www.google.com/";
             driver.Navigate().GoToUrl(url);
             Thread.Sleep(1000);
             Console.WriteLine("Url is {0}", url);
