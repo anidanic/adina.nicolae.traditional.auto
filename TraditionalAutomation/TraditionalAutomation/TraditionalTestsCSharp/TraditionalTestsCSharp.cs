@@ -12,6 +12,15 @@ namespace TraditionalAutomation.TraditionalTestsCSharp
     public class TraditionalTestsCSharp : BaseTest
     {
         [Test]
+        public void LoginUITest()
+        {
+            string url = "https://demo.applitools.com/hackathon.html";
+            driver.Navigate().GoToUrl(url);
+            Thread.Sleep(1000);
+            Console.WriteLine("Url is {0}", url);
+        }
+
+        [Test]
         public void CanvasChartTest()
         {
             string url = "https://www.google.com/";
@@ -38,14 +47,6 @@ namespace TraditionalAutomation.TraditionalTestsCSharp
             Console.WriteLine("Url is {0}", url);
         }
 
-        [Test]
-        public void LoginUITest()
-        {
-            string url = "https://www.google.com/";
-            driver.Navigate().GoToUrl(url);
-            Thread.Sleep(1000);
-            Console.WriteLine("Url is {0}", url);
-        }
         [Test]
         public void TableSortTest()
         {
