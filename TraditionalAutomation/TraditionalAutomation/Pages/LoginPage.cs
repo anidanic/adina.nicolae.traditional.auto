@@ -19,7 +19,6 @@ namespace TraditionalAutomation.Pages
         IWebElement RememberMeCheckbox => driver.FindElement(By.ClassName("form-check-input"));
         IList<IWebElement> Labels => driver.FindElements(By.TagName("label"));
         IList<IWebElement> Images => driver.FindElements(By.TagName("img"));
-        IList<IWebElement> PlaceHolders => driver.FindElements(By.TagName("placeholder"));
         string[] ExpectedLabels = { "Username", "Password", "Remember Me" };
         string[] ExpectedImages = { "img/logo-big.png", "img/social-icons/twitter.png", "img/social-icons/facebook.png", "img/social-icons/linkedin.png" };
         public string ExpectedPageName = "Login Form";
@@ -71,7 +70,7 @@ namespace TraditionalAutomation.Pages
                     isConfirmed = isConfirmed & Labels[i].Displayed & (Labels[i].Text == ExpectedLabels[i]);
                     if (!isConfirmed)
                     {
-                        Console.WriteLine("Issue with the label for {0}", ExpectedLabels[i]);
+                        Console.WriteLine("Issue with the label for {0}. It has Display {1} and Text {2}", ExpectedLabels[i], Labels[i].Displayed, Labels[i].Text);
                     }
                 }
                 return isConfirmed;
@@ -87,10 +86,15 @@ namespace TraditionalAutomation.Pages
             for (int i = 0; i < Images.Count; i++)
                 {
                     string imageSrc = Images[i].GetAttribute("src");
-                    isConfirmed = isConfirmed & Images[i].Displayed & (imageSrc == ExpectedImages[i]);
+                int index = imageSrc.IndexOf("img/");
+                if (index > 0)
+                {
+                    imageSrc = imageSrc.Substring(index);
+                }
+                isConfirmed = isConfirmed & Images[i].Displayed & (imageSrc == ExpectedImages[i]);
                     if (!isConfirmed)
                     {
-                        Console.WriteLine("Issue with the image with src for {0}", ExpectedImages[i]);
+                        Console.WriteLine("Issue with the image with src for {0}. It has Displayed {1} and Text {2}", ExpectedImages[i], Images[i].Displayed, imageSrc);
                     }
                 }
                 return isConfirmed;
@@ -98,18 +102,20 @@ namespace TraditionalAutomation.Pages
 
         public bool PlaceHoldersAreConfirmed()
         {
-            bool isConfirmed = (PlaceHolders.Count == ExpectedPlaceHolders.Length);
+            string[] PlaceHolders = new string[2];
+            PlaceHolders[0] = Username.GetAttribute("placeholder");
+            PlaceHolders[1] = Password.GetAttribute("placeholder");
+            bool isConfirmed = (PlaceHolders.Length == ExpectedPlaceHolders.Length);
             if (!isConfirmed)
             {
-                Console.WriteLine("Mismatch in the number of placeholders. Expected {0} and found {1}", ExpectedPlaceHolders.Length, PlaceHolders.Count);
+                Console.WriteLine("Mismatch in the number of placeholders. Expected {0} and found {1}", ExpectedPlaceHolders.Length, PlaceHolders.Length);
             }
-            for (int i = 0; i < PlaceHolders.Count; i++)
+            for (int i = 0; i < PlaceHolders.Length; i++)
                 {
-                    string text = PlaceHolders[i].Text;
-                    isConfirmed = isConfirmed & PlaceHolders[i].Displayed & (text == ExpectedPlaceHolders[i]);
+                    isConfirmed = isConfirmed & (PlaceHolders[i] == ExpectedPlaceHolders[i]);
                     if (!isConfirmed)
                     {
-                        Console.WriteLine("Issue with the placeholder for {0}", ExpectedPlaceHolders[i]);
+                        Console.WriteLine("Issue with the placeholder for {0}. It has Text {1}", ExpectedPlaceHolders[i], PlaceHolders[i]);
                     }
                 }
                 return isConfirmed;
