@@ -29,6 +29,7 @@ namespace TraditionalAutomation.Pages
             }
             if (showAd)
             {
+                Console.WriteLine("Version with show Ad was chosen.");
                 url = String.Concat(url, showAdParam);
             }
             Console.WriteLine("Url is {0}", url);

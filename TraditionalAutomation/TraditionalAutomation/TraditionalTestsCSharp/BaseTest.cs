@@ -31,7 +31,6 @@ namespace TraditionalAutomation.TraditionalTestsCSharp
         [OneTimeTearDown]
         public void AfterAll()
         {
-            Console.WriteLine("You can find all the screenshots at {0}", screenshotsPath);
             Console.WriteLine("End All");
         }
 
@@ -62,6 +61,7 @@ namespace TraditionalAutomation.TraditionalTestsCSharp
             SaveFile.TakesScreenshotWithDate(driver, testScreenshotsPath, testName, ScreenshotImageFormat.Jpeg, 1);
             // close the browser
             driver.Quit();
+            Console.WriteLine("You can find all the screenshots at {0} with name {1}", screenshotsPath, testName);
         }
     }
 }

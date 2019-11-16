@@ -12,4 +12,3 @@ C:\Users\anida\Documents\Visual AI Automation Hackaton\adina.nicolae.traditional
 C:\Users\anida\Documents\Visual AI Automation Hackaton\adina.nicolae.traditional.auto\TraditionalAutomation\TraditionalAutomation\bin\Debug\WebDriver.xml
 C:\Users\anida\Documents\Visual AI Automation Hackaton\adina.nicolae.traditional.auto\TraditionalAutomation\TraditionalAutomation\obj\Debug\TraditionalAutomation.dll
 C:\Users\anida\Documents\Visual AI Automation Hackaton\adina.nicolae.traditional.auto\TraditionalAutomation\TraditionalAutomation\obj\Debug\TraditionalAutomation.pdb
-C:\Users\anida\Documents\Visual AI Automation Hackaton\adina.nicolae.traditional.auto\TraditionalAutomation\TraditionalAutomation\obj\Debug\TraditionalAutomation.csprojResolveAssemblyReference.cache

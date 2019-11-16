@@ -60,12 +60,22 @@ namespace TraditionalAutomation.Pages
         //methods
         public bool LabelsAreConfirmed()
         {
-            bool isConfirmed = (Labels.Count == ExpectedLabels.Length);
-            if (!isConfirmed)
+            int diff = Labels.Count - ExpectedLabels.Length;
+            bool isTotal = (diff == 0);
+            bool isConfirmed = true;
+            if (!isTotal)
             {
                 Console.WriteLine("Mismatch in the number of labels. Expected {0} and found {1}", ExpectedLabels.Length, Labels.Count);
+                if (diff > 0)
+                {
+                    Console.WriteLine("Additional {0} images were found on page", diff);
+                }
+                else
+                {
+                    Console.WriteLine("Missing {0} images from the page", diff);
+                }
             }
-                for (int i = 0; i < Labels.Count; i++)
+            for (int i = 0; i < Labels.Count; i++)
                 {
                     isConfirmed = isConfirmed && Labels[i].Displayed && (Labels[i].Text == ExpectedLabels[i]);
                     if (!isConfirmed)
@@ -73,15 +83,25 @@ namespace TraditionalAutomation.Pages
                         Console.WriteLine("Issue with the label for {0}. It has Display {1} and Text {2}", ExpectedLabels[i], Labels[i].Displayed, Labels[i].Text);
                     }
                 }
-                return isConfirmed;
+                return isTotal && isConfirmed;
         }
 
         public bool ImagesAreConfirmed()
         {
-            bool isConfirmed = (Images.Count == ExpectedImages.Length);
-            if (!isConfirmed)
+            int diff = Images.Count - ExpectedImages.Length;
+            bool isTotal = (diff == 0);
+            bool isConfirmed = true;
+            if (!isTotal)
             {
                 Console.WriteLine("Mismatch in the number of images. Expected {0} and found {1}", ExpectedImages.Length, Images.Count);
+                if (diff > 0)
+                {
+                    Console.WriteLine("Additional {0} images were found on page", diff);
+                }
+                else
+                {
+                    Console.WriteLine("Missing {0} images from the page", diff);
+                }
             }
             for (int i = 0; i < Images.Count; i++)
                 {
@@ -97,7 +117,7 @@ namespace TraditionalAutomation.Pages
                         Console.WriteLine("Issue with the image with src for {0}. It has Displayed {1} and Text {2}", ExpectedImages[i], Images[i].Displayed, imageSrc);
                     }
                 }
-                return isConfirmed;
+            return isTotal && isConfirmed;
         }
 
         public bool PlaceHoldersAreConfirmed()
@@ -105,10 +125,20 @@ namespace TraditionalAutomation.Pages
             string[] PlaceHolders = new string[2];
             PlaceHolders[0] = Username.GetAttribute("placeholder");
             PlaceHolders[1] = Password.GetAttribute("placeholder");
-            bool isConfirmed = (PlaceHolders.Length == ExpectedPlaceHolders.Length);
-            if (!isConfirmed)
+            int diff = PlaceHolders.Length - ExpectedPlaceHolders.Length;
+            bool isTotal = (diff == 0);
+            bool isConfirmed = true;
+            if (!isTotal)
             {
                 Console.WriteLine("Mismatch in the number of placeholders. Expected {0} and found {1}", ExpectedPlaceHolders.Length, PlaceHolders.Length);
+                if (diff > 0)
+                {
+                    Console.WriteLine("Additional {0} placeholders were found on page", diff);
+                }
+                else
+                {
+                    Console.WriteLine("Missing {0} placeholders from the page", diff);
+                }
             }
             for (int i = 0; i < PlaceHolders.Length; i++)
                 {
@@ -118,7 +148,7 @@ namespace TraditionalAutomation.Pages
                         Console.WriteLine("Issue with the placeholder for {0}. It has Text {1}", ExpectedPlaceHolders[i], PlaceHolders[i]);
                     }
                 }
-                return isConfirmed;
+            return isTotal && isConfirmed;
         }
     }
 }

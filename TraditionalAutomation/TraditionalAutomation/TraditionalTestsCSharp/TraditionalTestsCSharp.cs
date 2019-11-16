@@ -20,7 +20,7 @@ namespace TraditionalAutomation.TraditionalTestsCSharp
         public void LoginUITest()
         {
             //decide which version/ url you want to use
-            bool testVersion1 = true;
+            bool testVersion1 = false;
             bool showAd = false;
             string url = Utils.GetUrl(testVersion1, showAd);
             //go to that url
